@@ -1,4 +1,4 @@
-import { ResolveOptions } from "webpack";
+import type { ResolveOptions } from "webpack";
 
 export const buildResolvers = (): ResolveOptions => {
   return {
