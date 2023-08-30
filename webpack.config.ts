@@ -1,35 +1,23 @@
 import path from "path";
 import webpack from "webpack";
-import HTMLWebpackPlugin from "html-webpack-plugin";
+import { buildWebpackConfig } from "./configs/build/buildWebpackConfig";
+import { BuildPaths } from "./configs/build/types/config";
 // in case you run into any typescript error when configuring `devServer`
 import "webpack-dev-server";
 
-const config: webpack.Configuration = {
-  mode: "development",
+const paths: BuildPaths = {
   entry: path.resolve(__dirname, "src", "index.ts"),
-  output: {
-    path: path.resolve(__dirname, "build"),
-    filename: "[name].[contenthash].js",
-    clean: true,
-  },
-  plugins: [
-    new HTMLWebpackPlugin({
-      template: path.resolve(__dirname, "public", "index.html"),
-    }),
-    new webpack.ProgressPlugin(),
-  ],
-  module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        use: "ts-loader",
-        exclude: /node_modules/,
-      },
-    ],
-  },
-  resolve: {
-    extensions: [".tsx", ".ts", ".js"],
-  },
+  build: path.resolve(__dirname, "build"),
+  html: path.resolve(__dirname, "public", "index.html"),
 };
+
+const mode = "development";
+const isDev = mode === "development";
+
+const config: webpack.Configuration = buildWebpackConfig({
+  paths,
+  mode,
+  isDev,
+});
 
 export default config;
