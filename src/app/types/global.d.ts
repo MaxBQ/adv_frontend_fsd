@@ -10,3 +10,4 @@ declare module "*.png";
 declare module "*.jpe";
 declare module "*.jpeg";
 declare module "*.gif";
+declare const __IS_DEV__: boolean;
