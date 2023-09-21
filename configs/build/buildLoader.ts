@@ -3,6 +3,23 @@ import type { RuleSetRule } from "webpack";
 import { BuildOptions } from "./types/config";
 
 export const buildLoader = ({ isDev }: BuildOptions): RuleSetRule[] => {
+  const babelLoader = {
+    test: /\.(js|jsx|tsx)$/,
+    exclude: /node_modules/,
+    use: {
+      loader: "babel-loader",
+      options: {
+        presets: ["@babel/preset-env"],
+        plugins: [
+          [
+            "i18next-extract",
+            { locales: ["en", "ru"], keyAsDefaultValue: true },
+          ],
+        ],
+      },
+    },
+  };
+
   const fileLoader = {
     test: /\.(png|jpe?g|gif|woff2|woff)$/i,
     use: [
@@ -40,5 +57,5 @@ export const buildLoader = ({ isDev }: BuildOptions): RuleSetRule[] => {
     exclude: /node_modules/,
   };
 
-  return [fileLoader, svgLoader, tsLoader, scssLoader];
+  return [fileLoader, svgLoader, babelLoader, tsLoader, scssLoader];
 };
