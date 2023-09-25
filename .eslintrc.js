@@ -8,6 +8,7 @@ module.exports = {
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
     "prettier",
+    "plugin:i18next/recommended",
   ],
   settings: {
     react: {
@@ -29,12 +30,15 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["react"],
+  plugins: ["react", "i18next"],
+  ignorePatterns: [".eslintrc.js"],
   rules: {
     "@typescript-eslint/naming-convention": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
     "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/indent": "off",
+    "i18next/no-literal-string": ["warn", { markupOnly: true }],
+    "@typescript-eslint/prefer-nullish-coalescing": "off",
   },
 };
