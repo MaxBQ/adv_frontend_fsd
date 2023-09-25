@@ -3,10 +3,8 @@ import type { BuildOptions } from "./types/config";
 
 export const buildDevSever = ({
   port,
-}: BuildOptions): DevServerConfiguration => {
-  return {
-    port,
-    historyApiFallback: true,
-    open: true,
-  };
-};
+}: BuildOptions): DevServerConfiguration => ({
+  port,
+  historyApiFallback: true,
+  open: true,
+});

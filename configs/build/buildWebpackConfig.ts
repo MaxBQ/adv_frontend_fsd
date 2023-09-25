@@ -6,9 +6,9 @@ import type { BuildOptions } from "./types/config";
 import { buildDevSever } from "./buildDevServer";
 
 export const buildWebpackConfig = (options: BuildOptions): Configuration => {
-  const { paths, mode, isDev } = options;
+  const { paths, mode, __IS_DEV__ } = options;
   return {
-    mode: mode,
+    mode,
     entry: paths.entry,
     output: {
       path: paths.build,
@@ -21,7 +21,7 @@ export const buildWebpackConfig = (options: BuildOptions): Configuration => {
       rules: buildLoader(options),
     },
     resolve: buildResolvers(options),
-    devtool: isDev ? "inline-source-map" : undefined,
-    devServer: isDev ? buildDevSever(options) : undefined,
+    devtool: __IS_DEV__ ? "inline-source-map" : undefined,
+    devServer: __IS_DEV__ ? buildDevSever(options) : undefined,
   };
 };

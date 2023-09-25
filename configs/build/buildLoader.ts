@@ -1,8 +1,8 @@
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import type { RuleSetRule } from "webpack";
-import { BuildOptions } from "./types/config";
+import { type BuildOptions } from "./types/config";
 
-export const buildLoader = ({ isDev }: BuildOptions): RuleSetRule[] => {
+export const buildLoader = ({ __IS_DEV__ }: BuildOptions): RuleSetRule[] => {
   const babelLoader = {
     test: /\.(js|jsx|tsx)$/,
     exclude: /node_modules/,
@@ -37,7 +37,7 @@ export const buildLoader = ({ isDev }: BuildOptions): RuleSetRule[] => {
   const scssLoader = {
     test: /\.s[ac]ss$/i,
     use: [
-      isDev ? "style-loader" : MiniCssExtractPlugin.loader,
+      __IS_DEV__ ? "style-loader" : MiniCssExtractPlugin.loader,
       {
         loader: "css-loader",
         options: {
