@@ -6,6 +6,7 @@ import {
   ProgressPlugin,
 } from "webpack";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import type { WebpackPluginInstance } from "webpack";
 import type { BuildOptions } from "./types/config";
 
@@ -26,4 +27,5 @@ export const buildPlugins = ({
   }),
   new HotModuleReplacementPlugin(),
   new ReactRefreshWebpackPlugin(),
+  new BundleAnalyzerPlugin({ openAnalyzer: false }),
 ];
