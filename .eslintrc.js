@@ -9,6 +9,7 @@ module.exports = {
     "plugin:react/jsx-runtime",
     "prettier",
     "plugin:i18next/recommended",
+    "plugin:storybook/recommended"
   ],
   settings: {
     react: {

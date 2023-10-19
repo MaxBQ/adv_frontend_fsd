@@ -11,7 +11,8 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
-      "*": ["./src/*"]
+      "*": ["./src/*"],
+      "include": ["./config/jest/setupTests.ts"]
     }
   },
   "ts-node": {
