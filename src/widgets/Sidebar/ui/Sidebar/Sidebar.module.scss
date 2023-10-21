@@ -5,9 +5,30 @@
   position: relative;
   transition: width 0.3s;
 }
+.items {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 20px;
+  gap: 10px;
+}
 
-.collapsed {
-  width: var(--sidebar-width-collapsed);
+.item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon {
+  fill: var(--inverted-primary-color);
+  width: var(--font-line-m);
+}
+
+.link {
+  opacity: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: ease-in-out 0.3s opacity;
 }
 
 .switchers {
@@ -20,6 +41,24 @@
   gap: 20px;
 }
 
-.switchers.collapsed {
-  flex-direction: column;
+.collapseBtn {
+  position: absolute;
+  bottom: 15px;
+  right: -32px;
+}
+
+.collapsed {
+  width: var(--sidebar-width-collapsed);
+  .switchers {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .items {
+    align-items: center;
+  }
+  .link {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
 }
