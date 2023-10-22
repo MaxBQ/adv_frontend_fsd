@@ -9,7 +9,7 @@ module.exports = {
     "plugin:react/jsx-runtime",
     "prettier",
     "plugin:i18next/recommended",
-    "plugin:storybook/recommended"
+    "plugin:storybook/recommended",
   ],
   settings: {
     react: {
@@ -31,7 +31,7 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["react", "i18next"],
+  plugins: ["react", "i18next", "react-hooks"],
   ignorePatterns: [".eslintrc.js"],
   rules: {
     "@typescript-eslint/naming-convention": "off",
@@ -41,6 +41,9 @@ module.exports = {
     "@typescript-eslint/indent": "off",
     "i18next/no-literal-string": ["warn", { markupOnly: true }],
     "@typescript-eslint/prefer-nullish-coalescing": "off",
+    "react/prop-types": "off",
+    "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+    "react-hooks/exhaustive-deps": "error", // Checks effect
   },
 
   overrides: [
