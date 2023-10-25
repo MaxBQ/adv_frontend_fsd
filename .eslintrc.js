@@ -46,6 +46,10 @@ module.exports = {
     "react-hooks/exhaustive-deps": "error", // Checks effect
   },
 
+  globals: {
+    __IS_DEV__: true,
+  },
+
   overrides: [
     {
       files: ["**/src/**/*.test.{ts,tsx}"],

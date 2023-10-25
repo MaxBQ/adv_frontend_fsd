@@ -1,5 +1,6 @@
 /** @type {import('ts-jest').JestConfigWithTsJest} */
 module.exports = {
+  globals: { __IS_DEV__: true },
   preset: "ts-jest",
   clearMocks: true,
   testEnvironment: "jsdom",
