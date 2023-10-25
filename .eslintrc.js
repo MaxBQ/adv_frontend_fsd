@@ -16,6 +16,7 @@ module.exports = {
       version: "detect",
     },
   },
+  parser: "@typescript-eslint/parser",
   overrides: [
     {
       env: {
@@ -45,7 +46,6 @@ module.exports = {
     "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
     "react-hooks/exhaustive-deps": "error", // Checks effect
   },
-
   globals: {
     __IS_DEV__: true,
   },
