@@ -7,11 +7,13 @@ interface ModalProps {
   className?: string;
   isOpen?: boolean;
   onClose?: () => void;
+  laze?: boolean;
 }
 const ANIMATION_DELAY = 300;
 export const Modal: React.FC<ModalProps> = (props) => {
-  const { className, children, isOpen, onClose } = props;
+  const { className, children, isOpen, onClose, laze } = props;
   const [closed, setClosed] = useState<boolean>(false);
+  const [isMount, setIsMount] = useState<boolean>(false);
   const timeRef = useRef<ReturnType<typeof setTimeout>>();
   const closeHandler = useCallback(() => {
     if (onClose) {
@@ -36,14 +38,27 @@ export const Modal: React.FC<ModalProps> = (props) => {
   );
 
   useEffect(() => {
+    if (isOpen) {
+      setIsMount(true);
+    }
+    return () => {
+      setIsMount(false);
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
     window.addEventListener("keydown", onKeyDown);
     return () => {
       clearTimeout(timeRef.current);
       window.removeEventListener("keydown", onKeyDown);
     };
   }, [isOpen, onKeyDown]);
+
+  if (laze && !isMount) {
+    return null;
+  }
   return (
-    <Portal wrapperId="wrap-modal">
+    <Portal>
       <div
         className={classNames(
           cls.Modal,

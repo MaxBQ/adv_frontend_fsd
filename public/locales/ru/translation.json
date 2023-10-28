@@ -4,5 +4,7 @@
   "Main": "Главная",
   "About": "О нас",
   "Not found page": "Страница не найдена",
-  "Login": "Войти"
+  "Login": "Войти",
+  "Enter username": "Введите имя пользователя",
+  "Enter the password": "Введите пароль"
 }
