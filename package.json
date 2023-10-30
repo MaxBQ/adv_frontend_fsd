@@ -20,7 +20,8 @@
     "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
     "test:ui:ci": "loki --requireReference --reactUri file:./storybook-static",
     "storybook": "storybook dev -p 6006 -c ./configs/storybook",
-    "storybook:build": "storybook build -c ./configs/storybook"
+    "storybook:build": "storybook build -c ./configs/storybook",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
@@ -87,7 +88,8 @@
     "typescript": "^5.2.2",
     "webpack": "^5.88.2",
     "webpack-bundle-analyzer": "^4.9.1",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "husky": "^8.0.0"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
