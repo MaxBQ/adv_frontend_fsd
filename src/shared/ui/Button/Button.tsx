@@ -21,17 +21,18 @@ type ButtonProps = {
   theme?: ThemeButton;
   square?: boolean;
   size?: SizeButton;
+  disabled?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const Button: FC<ButtonProps> = (props) => {
-  const { className, theme, children, square, size, ...otherProps } = props;
-  const additional = [cls[theme], cls[size]];
+  const { className, theme, children, disabled, square, size, ...otherProps } =
+    props;
+  const additional = [className, cls[theme], cls[size]];
+  const mods = { [cls.square]: square, [cls.disabled]: disabled };
   return (
     <button
-      className={classNames(cls.Button, { [cls.square]: square }, [
-        className,
-        ...additional,
-      ])}
+      className={classNames(cls.Button, mods, additional)}
+      disabled={disabled}
       {...otherProps}
     >
       {children}

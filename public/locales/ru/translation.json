@@ -6,5 +6,7 @@
   "Not found page": "Страница не найдена",
   "Login": "Войти",
   "Enter username": "Введите имя пользователя",
-  "Enter the password": "Введите пароль"
+  "Enter the password": "Введите пароль",
+  "Invalid username or password": "Неверный логин или пароль",
+  "Auth form": "Форма авторизации"
 }

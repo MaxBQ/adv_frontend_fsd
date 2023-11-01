@@ -1,9 +1,11 @@
 {
   "About": "About",
   "About page": "About page",
+  "Auth form": "Auth form",
   "Enter the password": "Enter the password",
   "Enter username": "Enter username",
   "Login": "Login",
+  "Logout": "Logout",
   "Main": "Main",
   "Main page": "Main page",
   "Not found page": "Not found page",

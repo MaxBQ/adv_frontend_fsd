@@ -13,7 +13,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Normal: Story = {
-  decorators: [ThemeDecorator(Theme.LIGHT, "app")],
+  decorators: [ThemeDecorator(Theme.LIGHT)],
   args: {
     isOpen: true,
     children:
@@ -21,7 +21,7 @@ export const Normal: Story = {
   },
 };
 export const Dark: Story = {
-  decorators: [ThemeDecorator(Theme.DARK, "app")],
+  decorators: [ThemeDecorator(Theme.DARK)],
   args: {
     isOpen: true,
     children:

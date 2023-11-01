@@ -80,3 +80,10 @@ export const SizeXL: Story = {
     theme: ThemeButton.BACKGROUND_INVERTED,
   },
 };
+export const Disabled: Story = {
+  args: {
+    children: "Text",
+    disabled: true,
+    theme: ThemeButton.BACKGROUND_INVERTED,
+  },
+};

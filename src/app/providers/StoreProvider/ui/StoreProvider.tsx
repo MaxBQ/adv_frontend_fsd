@@ -1,5 +1,5 @@
 import type { DeepPartial } from "@reduxjs/toolkit";
-import { createReduxStory } from "../config/store";
+import { createReduxStore } from "../config/store";
 import type { StateSchema } from "../config/StateSchema";
 import { Provider } from "react-redux";
 interface StoreProviderProps {
@@ -7,6 +7,6 @@ interface StoreProviderProps {
 }
 export const StoreProvider: React.FC<StoreProviderProps> = (props) => {
   const { children, initialStore } = props;
-  const store = createReduxStory(initialStore as StateSchema);
+  const store = createReduxStore(initialStore as StateSchema);
   return <Provider store={store}>{children}</Provider>;
 };
