@@ -3,7 +3,7 @@ import cls from "./LoginForm.module.scss";
 import { useTranslation } from "react-i18next";
 import { Input } from "shared/ui/Input/Input";
 import { Button, ThemeButton } from "shared/ui/Button/Button";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { memo, useCallback } from "react";
 import { loginActions, loginReducer } from "../../model/slice/loginSlice";
 import { loginByUsername } from "../../model/services/loginByUsername/loginByUsername";
@@ -16,16 +16,21 @@ import { getLoginError } from "../../model/selector/getLoginError/getLoginError"
 import { getLoginPassword } from "../../model/selector/getLoginPassword/getLoginPassword";
 import { getLoginUsername } from "../../model/selector/getLoginUsername/getLoginUsername";
 import { getLoginIsLoading } from "../../model/selector/getLoginIsLoading/getLoginIsLoading";
+import { useAppDispatch } from "shared/lib/useAppDispatch/useAppDispatch";
 
 export interface LoginFormProps {
   className?: string;
+  onSuccess: () => void;
 }
 const initialReducers: ReducersList = {
   loginForm: loginReducer,
 };
-const LoginForm = memo(function LoginForm({ className }: LoginFormProps) {
+const LoginForm = memo(function LoginForm({
+  className,
+  onSuccess,
+}: LoginFormProps) {
   const { t } = useTranslation();
-  const dispatch = useDispatch<any>();
+  const dispatch = useAppDispatch();
 
   const error = useSelector(getLoginError);
   const isLoading = useSelector(getLoginIsLoading);
@@ -47,8 +52,14 @@ const LoginForm = memo(function LoginForm({ className }: LoginFormProps) {
   );
 
   const onRequestLoginClick = useCallback(() => {
-    dispatch(loginByUsername({ password, username }));
-  }, [password, username, dispatch]);
+    const click = async () => {
+      const resolve = await dispatch(loginByUsername({ password, username }));
+      if (resolve.meta.requestStatus === "fulfilled") {
+        onSuccess();
+      }
+    };
+    click();
+  }, [onSuccess, password, username, dispatch]);
   return (
     <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
       <div className={classNames(cls.LoginForm, {}, [className])}>
