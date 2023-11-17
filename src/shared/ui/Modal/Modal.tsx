@@ -34,7 +34,7 @@ export const Modal: React.FC<ModalProps> = (props) => {
         closeHandler();
       }
     },
-    [closeHandler]
+    [closeHandler],
   );
 
   useEffect(() => {
@@ -63,7 +63,7 @@ export const Modal: React.FC<ModalProps> = (props) => {
         className={classNames(
           cls.Modal,
           { [cls.opened]: isOpen, [cls.closed]: closed },
-          [className]
+          [className],
         )}
       >
         <div className={cls.substrate} onClick={closeHandler}>

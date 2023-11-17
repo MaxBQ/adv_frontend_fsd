@@ -50,7 +50,6 @@ const LoginForm = memo(function LoginForm({
     },
     [dispatch],
   );
-
   const onRequestLoginClick = useCallback(() => {
     const click = async () => {
       const resolve = await dispatch(loginByUsername({ password, username }));

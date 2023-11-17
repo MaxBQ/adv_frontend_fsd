@@ -13,24 +13,6 @@
   gap: 10px;
 }
 
-.item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.icon {
-  fill: var(--inverted-primary-color);
-  width: var(--font-line-m);
-}
-
-.link {
-  opacity: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  transition: ease-in-out 0.3s opacity;
-}
-
 .switchers {
   position: absolute;
   bottom: 20px;
@@ -55,10 +37,5 @@
   }
   .items {
     align-items: center;
-  }
-  .link {
-    opacity: 0;
-    width: 0;
-    height: 0;
   }
 }
