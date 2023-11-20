@@ -2,7 +2,7 @@ import type { RuleSetRule } from "webpack";
 import { type BuildOptions } from "./types/config";
 import { buildCssLoader } from "./loader/buildCssLoader";
 
-export const buildLoader = ({ __IS_DEV__ }: BuildOptions): RuleSetRule[] => {
+export const buildLoader = ({ isDev }: BuildOptions): RuleSetRule[] => {
   const babelLoader = {
     test: /\.(js|jsx|tsx)$/,
     exclude: /node_modules/,
@@ -34,7 +34,7 @@ export const buildLoader = ({ __IS_DEV__ }: BuildOptions): RuleSetRule[] => {
     use: ["@svgr/webpack"],
   };
 
-  const scssLoader = buildCssLoader(__IS_DEV__);
+  const scssLoader = buildCssLoader(isDev);
 
   const tsLoader = {
     test: /\.tsx?$/,

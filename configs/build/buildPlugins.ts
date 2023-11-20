@@ -12,9 +12,10 @@ import type { BuildOptions } from "./types/config";
 
 export const buildPlugins = ({
   paths,
-  __IS_DEV__,
+  isDev,
+  apiUrl,
 }: BuildOptions): WebpackPluginInstance[] => {
-  const plagins = [
+  const plugins = [
     new HtmlWebpackPlugin({
       template: paths.html,
     }),
@@ -24,16 +25,17 @@ export const buildPlugins = ({
       chunkFilename: "css/[name].[contenthash:8].css",
     }),
     new DefinePlugin({
-      __IS_DEV__: JSON.stringify(__IS_DEV__),
+      __IS_DEV__: JSON.stringify(isDev),
+      __API__: JSON.stringify(apiUrl),
     }),
   ];
-  if (__IS_DEV__) {
-    plagins.push(
+  if (isDev) {
+    plugins.push(
       new HotModuleReplacementPlugin(),
       new ReactRefreshWebpackPlugin(),
-      new BundleAnalyzerPlugin({ openAnalyzer: false })
+      new BundleAnalyzerPlugin({ openAnalyzer: false }),
     );
   }
 
-  return plagins;
+  return plugins;
 };
