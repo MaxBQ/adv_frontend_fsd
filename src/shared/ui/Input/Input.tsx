@@ -31,7 +31,7 @@ export const Input = memo(function Input(props: InputProps) {
     ...otherProps
   } = props;
 
-  const ref = useRef<HTMLInputElement>(null);
+  const ref = useRef<HTMLInputElement | null>(null);
   const [isFocus, setIsFocus] = useState<boolean>(false);
   const [caretPosition, setCaretPosition] = useState<number>(0);
 

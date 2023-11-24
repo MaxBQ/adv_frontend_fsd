@@ -10,10 +10,12 @@ import type { LoginSchema } from "features/AuthByUsername";
 import type { AxiosInstance } from "axios";
 import type { NavigateOptions } from "react-router";
 import type { To } from "history";
+import type { ProfileSchema } from "entities/Profile";
 
 export interface StateSchema {
   user: UserSchema;
   loginForm?: LoginSchema;
+  profile?: ProfileSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

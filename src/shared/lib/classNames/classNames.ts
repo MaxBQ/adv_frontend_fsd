@@ -1,9 +1,9 @@
-type Mode = Record<string, boolean | string>;
-
+export type Mode = Record<string, boolean | string | undefined>;
+export type Additional = Array<string | undefined>;
 export function classNames(
   cls: string,
   mode: Mode = {},
-  additional: string[] = []
+  additional: Additional = [],
 ): string {
   return [
     cls,

@@ -1,4 +1,8 @@
-import { classNames } from "shared/lib/classNames/classNames";
+import {
+  type Additional,
+  classNames,
+  type Mode,
+} from "shared/lib/classNames/classNames";
 import cls from "./Button.module.scss";
 import { type ButtonHTMLAttributes, type FC } from "react";
 
@@ -25,10 +29,17 @@ type ButtonProps = {
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const Button: FC<ButtonProps> = (props) => {
-  const { className, theme, children, disabled, square, size, ...otherProps } =
-    props;
-  const additional = [className, cls[theme], cls[size]];
-  const mods = { [cls.square]: square, [cls.disabled]: disabled };
+  const {
+    className,
+    theme = ThemeButton.OUTLINE,
+    children,
+    disabled,
+    square,
+    size = SizeButton.M,
+    ...otherProps
+  } = props;
+  const additional: Additional = [className, cls[theme], cls[size]];
+  const mods: Mode = { [cls.square]: square, [cls.disabled]: disabled };
   return (
     <button
       className={classNames(cls.Button, mods, additional)}
